@@ -734,4 +734,16 @@ describe('chromium feature', function () {
       })
     })
   })
+
+  describe('window.prompt', () => {
+    it('throws an error', () => {
+      assert.throws(() => {
+        window.prompt()
+      }, (error) => {
+        assert.equal(error.message, 'prompt() is and will not be supported.')
+        assert.equal(error.stack.indexOf('override.js'), -1)
+        return true
+      })
+    })
+  })
 })
